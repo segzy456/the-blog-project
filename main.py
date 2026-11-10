@@ -236,7 +236,7 @@ def about():
     return render_template("about.html", current_user=current_user)
 
 def send_email(name,email,phone,message):
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+    with smtplib.SMTP("smtp.gmail.com",port=587) as connection:
         email_message=f"Subject:New message\n\nName:{name}\nEmail:{email}\nphone_number:{phone}\nmessage:{message}"
         connection.starttls()
         connection.login(user=own_email,password=own_password)
@@ -255,4 +255,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True)

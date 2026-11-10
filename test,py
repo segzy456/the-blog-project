@@ -1,0 +1,17 @@
+import smtplib
+
+try:
+    connection = smtplib.SMTP("smtp.gmail.com", 587, timeout=20)
+
+    connection.set_debuglevel(1)
+
+    connection.ehlo()
+    connection.starttls()
+    connection.ehlo()
+
+    print("SMTP connection successful!")
+
+    connection.quit()
+
+except Exception as e:
+    print("Error:", e)
