@@ -18,6 +18,7 @@ own_email=os.environ.get("email")
 own_password=os.environ.get("password")
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
+app.config['SECRET_KEY'] = os.environ.get('secret_key')
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -254,4 +255,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True, port=5001)
